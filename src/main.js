@@ -1,36 +1,31 @@
-//Puppeteer
-const express = require('express');
+const app = require('express')();
 const puppeteer = require('puppeteer');
-
-const startBrowser = require('./startBrowser')
-
-const app = express();
-const POST = 3001;
+const PORT = 3001;
 
 (async () => {
-    let browser = await startBrowser()
-    let url = 'https://vnexpress.net/tin-tuc-24h';
-    try {
-        let page = await browser.newPage();
-        console.log(`Navigating to ${url}...`);
-        await page.goto(url);
-        // await page.screenshot({path: 'image.png'})
+  const browser = await puppeteer.launch({ headless: true });
+  const page = await browser.newPage();
+  await page.goto('https://vnexpress.net/tin-tuc-24h');
 
-        const title_news = await page.evaluate(() => {
-            return Array.from(
-                document.querySelectorAll("#automation_TV0 > div > article")
-            ).map((title, index) => {
-                
-            });
-        })
-        console.log(title_news)
-    }
-    catch (err) {
-        console.log("Could not resolve the browser instance => ", err);
-    }
-    browser.close()
-})()
+  try {
+    const articles = await page.evaluate(() => {
+      const titles = document.getElementsByClassName('item-news item-news-common');
+      const arrTitle = [];
 
-app.listen(POST, () => {
-    console.log(`server run on port ${POST}`)
-})
+      for (const title of titles) {
+        arrTitle.push({
+          h3: title.getElementsByTagName('h3')[0] ? title.getElementsByTagName('h3')[0].textContent : '',
+          p: title.getElementsByTagName('p')[0] ? title.getElementsByTagName('p')[0].textContent : ''
+        });
+      }
+      return arrTitle;
+    });
+
+    console.log(articles);
+  } catch (err) {
+    console.error(err);
+  }
+  browser.close();
+})();
+
+app.listen(PORT, () => console.info(`server run on port ${PORT}`));
