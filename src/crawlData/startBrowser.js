@@ -32,5 +32,5 @@ const StartBrowser = async () => {
     }
     browser.close();
 };
-StartBrowser()
+// StartBrowser()
 export default StartBrowser
