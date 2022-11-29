@@ -1,35 +1,31 @@
-//cheerio
-const express = require('express');
-const cheerio = require('cheerio');
-const request = require('request-promise');
-const fs = require('fs')
+import express from 'express';
+import cors from 'cors';
+import dotennv from 'dotenv';
+import config from './configs/config.js';
+import routes from './routes/index.js';
+import { ConnectionDB } from './services/db.js';
+import { serverSocket } from './serverSocket.js';
+
 const app = express()
-const port = 3000
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
+const server = http.createServer(app);
+serverSocket(server);
 
-request('https://vnexpress.net/', (error, response, html) => {
-    if (!error && response.statusCode == 200) {
-        const $ = cheerio.load(html);
-        let newsTop = []
-        $('.item-news').each((index, el) => {
-            const title_news = $(el).find('.title-news a').text();
-            const description = $(el).find('.description a').text()
-            const urlIMG = $(el).find('.thumb-art a picture img').src;
-            console.log( urlIMG)
-            newsTop.push({
-                title_news, description
-            });
-        });
-        fs.writeFileSync('data.json', JSON.stringify(newsTop)); // lưu dữ liệu vào file data.json
-    }
-    else {
-        console.log(error);
-    }
-});
+const corOptions = {
+    origin: '*'
+}
+app.use(cors(corOptions))
 
-app.listen(port, () => {
-    console.log(`Server listening port: ${port}`)
-})
+app.use(express.urlencoded({
+    extended: true
+}));
+app.use(express.json());
+
+dotennv.config()
+ConnectionDB()
+
+app.use('/v1', routes)
+
+app.get('', (req, res) => res.send('Start success...'));
+
+app.listen(config.port, () => console.info(`server run on port ${config.port}`));

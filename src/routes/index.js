@@ -1,9 +1,8 @@
-import routeNews from "./news.route.js"
-import routeUser from "./user.route.js"
+import express from "express";
+import userRoute from "./user.js";
 
-const route = (app) => {
-    app.use('/', routeUser)
-    app.use('/news', routeNews)
-}
+const route = express.Router()
+
+route.use(userRoute)
 
 export default route
