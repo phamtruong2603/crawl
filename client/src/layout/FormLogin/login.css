@@ -1,0 +1,108 @@
+.login {
+    height: calc(100vh - 50px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.wrapperLogin {
+    width: 60%;
+    height: 75%;
+    box-shadow: -5px -1px 10px -1px rgba(0, 0, 0, 0.72);
+    -webkit-box-shadow: -5px -1px 10px -1px rgba(0, 0, 0, 0.72);
+    -moz-box-shadow: -5px -1px 10px -1px rgba(0, 0, 0, 0.72);
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.leftLogin,
+.rightLogin {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.centerLogin {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.orLogin {
+    border: 2px solid lightgray;
+    border-radius: 50%;
+    padding: 10px;
+    color: gray;
+    background-color: white;
+    font-weight: bold
+}
+
+.lineLogin {
+    width: 0.5px;
+    height: 70%;
+    background-color: lightgray;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    z-index: -1;
+}
+
+.loginButton {
+    width: 150px;
+    padding: 15px 25px;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.google {
+    background-color: #df4930;
+}
+.facebook {
+    background-color: #507cc0;
+}
+.github {
+    background-color: rgb(15, 15, 15);
+}
+
+.iconLogin {
+    width: 20%;
+    height: 20%;
+    margin-right: 10px;
+}
+
+.rightLogin input {
+    width: 200px;
+    border-radius: 5px;
+    padding: 15px 20px;
+    outline: none;
+    margin-bottom: 20px;
+}
+.rightLogin button {
+    width: 200px;
+    padding: 15px 20px;
+    background-color: rgba(102, 16, 83, 0.69);
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.titleLogin {
+    position: absolute;
+    top: 120px;
+    color: rgb(155, 154, 154);
+}

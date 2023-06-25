@@ -1,0 +1,26 @@
+.header {
+    height: 50px;
+    background-color: rgba(102, 16, 83, 0.69);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.list {
+    display: flex;
+    align-items: center;
+}
+
+.listItem {
+    margin-right: 20px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}

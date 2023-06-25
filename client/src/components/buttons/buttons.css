@@ -1,0 +1,165 @@
+.run_circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.circleSVG {
+    height: 36px;
+    width: 36px;
+    margin: auto;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.circleSVG .circle {
+    stroke-width: 2px;
+    stroke: lightgray;
+    fill: none;
+}
+
+
+.circleSVG .circle_run {
+    stroke-width: 2px;
+    stroke: rgb(231, 69, 204);
+    fill: none;
+    stroke-dasharray: 110;
+    animation: undraw 0.35s linear forwards;
+}
+
+.circleSVG:hover .circle_run {
+    animation: draw 0.35s linear forwards;
+}
+
+@keyframes draw {
+    from {
+        stroke-dashoffset: 110;
+    }
+
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes undraw {
+    to {
+        stroke-dashoffset: 110;
+    }
+}
+
+.arrow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(92, 90, 90);
+    font-size: 1.3rem;
+}
+
+/* --------------------- */
+
+.LearnMore {
+    display: flex;
+    justify-content: center;
+}
+
+.LearnMore_link {
+    position: relative;
+    padding: 10px 20px;
+    background-color: rgb(224, 222, 223);
+    color: rgb(95, 95, 95);
+    letter-spacing: 2px;
+    box-shadow: -2px -1px 5px -1px rgba(0, 0, 0, 0.72);
+    -webkit-box-shadow: -2px -1px 5px -1px rgba(0, 0, 0, 0.72);
+    -moz-box-shadow: -2px -1px 5px -1px rgba(0, 0, 0, 0.72);
+    overflow: hidden;
+}
+
+.LearnMore_link:hover {
+    color: #730077;
+}
+
+.LearnMore_link:hover span:nth-child(1) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, #730077, #f889e9);
+    animation: animate1 2s linear infinite;
+}
+
+.LearnMore_link:hover span:nth-child(2) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, #730077, #f889e9);
+    animation: animate2 2s linear infinite;
+    animation-delay: 1s;
+}
+
+.LearnMore_link:hover span:nth-child(3) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to left, #730077, #f889e9);
+    animation: animate3 2s linear infinite;
+}
+
+.LearnMore_link:hover span:nth-child(4) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to top, #730077, #f889e9);
+    animation: animate4 2s linear infinite;
+    animation-delay: 1s;
+}
+
+@keyframes animate1 {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes animate2 {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes animate3 {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes animate4 {
+    0% {
+        transform: translateY(100%);
+    }
+
+    100% {
+        transform: translateY(-100%);
+    }
+}

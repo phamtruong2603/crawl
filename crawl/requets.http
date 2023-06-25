@@ -1,0 +1,43 @@
+###
+POST http://localhost:3001/v1/register
+Content-Type: application/json
+
+{
+    "usename": "Cao Anh Huy",
+    "account": "huyca95@gmail.com",
+    "password": "222222",
+    "provider":"phonenumber"
+}
+
+###
+POST http://localhost:3001/v1/login
+Content-Type: application/json
+
+{
+    "account": "huyca95@gmail.com",
+    "password": "222222",
+    "provider":"phonenumber"
+}
+
+###
+GET http://localhost:3001/v1/autoLogin
+Content-Type: application/json
+Authorization: Beaer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjc4NTEyMDA4LCJleHAiOjE2Nzg1MTU2MDh9.jm0roAzv7ec5k_RWMY369Ekq_DQTK9B3eWz6L2OCHKc
+
+###
+POST http://localhost:3001/v1/newRoomChat
+Content-Type: application/json
+
+{
+    "member":[1, 2]
+}
+
+###
+POST http://localhost:3001/v1/chat
+Content-Type: application/json
+
+{
+    "message": "Cao Anh Huy123",
+    "userId": "1",
+    "roomChatId": "1"
+}
